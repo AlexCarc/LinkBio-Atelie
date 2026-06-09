@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Link-Bio</title>
+</head>
+<body>
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <div class="container">
+        <div class="profile">
+            <img id="profileImg">
+            <h1 id="profileName"></h1>
+            <p id="profileBio"></p>
+        </div>
+
+        <div class="links" id="linksContainer"></div>
+        <div class="footer">@ 2026 All rights reserved</div>
+    </div>
+
+    <script>
+        const profile = {
+            name: "Ateliê Estampados Personalizados",
+            bio: "DTF & Sublimação de Alta Qualidade | Camisetas e Brindes Personalizados",
+            image: "img/logo.png"
+        }
+
+        const links = [
+            { title: "WhatsApp", url: "https://wa.me/5511980305205", icon:"fab fa-whatsapp"},
+            { title: "Facebook", url: "https://www.facebook.com/profile.php?id=61590443651542", icon: "fab fa-facebook-f"},
+            { title: "E-mail", url: "mailto:atelieestampadospersonalizados@gmail.com", icon: "fas fa-envelope"},
+            { title: "Site", url: "https://alexcarc.github.io/atelie-estampados/", icon:"fas fa-briefcase"},
+            { title: "TikTok", url: "https://www.tiktok.com/", icon: "fab fa-tiktok" },
+            { title: "Pinterest", url: "https://br.pinterest.com/", icon: "fab fa-pinterest-p" },
+            { title: "LinkedIn", url: "https://www.linkedin.com/", icon: "fab fa-linkedin-in" },
+            { title: "Shopee", url: "https://shopee.com.br/", icon: "fas fa-store" }
+        ]
+
+        document.getElementById("profileName").textContent = profile.name;
+        document.getElementById("profileBio").textContent = profile.bio;
+        document.getElementById("profileImg").src = profile.image;
+
+        const container = document.getElementById("linksContainer");
+        links.forEach((link) => {
+            container.innerHTML += `
+                <a class="link" href="${link.url}" target="_blank">
+                    <i class="${link.icon}"></i> <span>${link.title}</span>
+                </a>
+            `   
+        })
+
+        const toggle = document.getElementById("themeToggle");
+        toggle.onclick = () => {
+            document.body.classList.toggle("light");
+            toggle.innerHTML = document.body.classList.contains("light") ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>'
+        }
+    </script>
+</body>
+</html>
